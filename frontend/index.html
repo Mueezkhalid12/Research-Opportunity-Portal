@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Opportunity Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Research Opportunity Portal</h1>
+        <p>Discover research opportunities at your university</p>
+    </header>
+
+    <main class="container">
+
+        <section class="form-section">
+            <h2 id="form-heading">Add Research Opportunity</h2>
+
+            <form id="opportunity-form">
+                <input type="hidden" id="opportunity-id">
+
+                <label for="title">Opportunity Title</label>
+                <input type="text" id="title" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" required></textarea>
+
+                <label for="research_area">Research Area</label>
+                <input type="text" id="research_area" required>
+
+                <label for="faculty_name">Faculty Member</label>
+                <input type="text" id="faculty_name" required>
+
+                <label for="department">Department</label>
+                <input type="text" id="department" required>
+
+                <label for="required_skills">Required Skills</label>
+                <input type="text" id="required_skills" required>
+
+                <label for="available_positions">Available Positions</label>
+                <input type="number" id="available_positions"
+                       min="1" step="1" required>
+
+                <label for="application_deadline">Application Deadline</label>
+                <input type="date" id="application_deadline" required>
+
+                <div class="form-buttons">
+                    <button type="submit" id="save-button">
+                        Add Opportunity
+                    </button>
+                    <button type="button" id="cancel-button"
+                            class="secondary" hidden>
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="opportunities-section">
+            <h2>Available Research Opportunities</h2>
+            <button type="button" id="refresh-button" class="secondary">
+                Refresh Opportunities
+            </button>
+
+            <div id="opportunities-list">
+                Loading opportunities...
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

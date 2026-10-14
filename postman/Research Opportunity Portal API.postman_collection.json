@@ -1,0 +1,375 @@
+{
+  "info": {
+    "_postman_id": "bb943814-4d53-4959-a950-98879c4dc37f",
+    "name": "Research Opportunity Portal API",
+    "description": "API tests for creating, retrieving, updating, closing, and deleting research opportunities.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58793167",
+    "_collection_link": "https://go.postman.co/collection/58793167-bb943814-4d53-4959-a950-98879c4dc37f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. Create Opportunity 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Opportunity created successfully', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+              "let d = pm.response.json();",
+              "if (d.id) pm.collectionVariables.set('opportunityId', d.id);",
+              "else if (d.insertId) pm.collectionVariables.set('opportunityId', d.insertId);",
+              "else if (d.opportunity && d.opportunity.id) pm.collectionVariables.set('opportunityId', d.opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"AI Research Assistant\",\n  \"description\": \"Work on an artificial intelligence research project.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, Machine Learning\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2027-06-30\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Create Opportunity 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Opportunity created successfully', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+              "let d = pm.response.json();",
+              "if (d.id) pm.collectionVariables.set('opportunityId', d.id);",
+              "else if (d.insertId) pm.collectionVariables.set('opportunityId', d.insertId);",
+              "else if (d.opportunity && d.opportunity.id) pm.collectionVariables.set('opportunityId', d.opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Cybersecurity Research Project\",\n  \"description\": \"Explore network security and threat detection.\",\n  \"research_area\": \"Cybersecurity\",\n  \"faculty_name\": \"Dr. Sara\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Networking, Security\",\n  \"available_positions\": 3,\n  \"application_deadline\": \"2027-07-15\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Create Opportunity 3",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Opportunity created successfully', function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+              "let d = pm.response.json();",
+              "if (d.id) pm.collectionVariables.set('opportunityId', d.id);",
+              "else if (d.insertId) pm.collectionVariables.set('opportunityId', d.insertId);",
+              "else if (d.opportunity && d.opportunity.id) pm.collectionVariables.set('opportunityId', d.opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Data Science Research\",\n  \"description\": \"Analyze datasets and build predictive models.\",\n  \"research_area\": \"Data Science\",\n  \"faculty_name\": \"Dr. Bilal\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, SQL, Statistics\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2027-08-20\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Get All Opportunities",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Get all opportunities returns success', function () { pm.expect(pm.response.code).to.equal(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Get Opportunity by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Get one opportunity returns success', function () { pm.expect(pm.response.code).to.equal(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{opportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{opportunityId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Update Opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Update opportunity returns success', function () { pm.expect(pm.response.code).to.equal(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated AI Research Assistant\",\n  \"description\": \"Updated research description.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, Deep Learning\",\n  \"available_positions\": 4,\n  \"application_deadline\": \"2027-09-30\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{opportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{opportunityId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. Close Opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Close opportunity returns success', function () { pm.expect(pm.response.code).to.equal(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{opportunityId}}/close",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{opportunityId}}",
+            "close"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8. Delete Opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Delete opportunity returns success', function () { pm.expect(pm.response.code).to.equal(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{opportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{opportunityId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. Get Deleted Opportunity (Expected 404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Deleted opportunity returns 404', function () { pm.expect(pm.response.code).to.equal(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{opportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{opportunityId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. Validation Test - Missing Required Fields",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Invalid data is rejected', function () { pm.expect(pm.response.code).to.equal(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "opportunityId",
+      "value": "1"
+    }
+  ]
+}
